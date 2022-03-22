@@ -1,27 +1,28 @@
-import "./lists.css";
+import "./orgs.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useEffect, useContext } from "react";
-import { ListContext } from "../../context/listContext/ListContext";
-import { deleteList, getLists } from "../../context/listContext/ApiCalls";
+import { OrgContext } from "../../context/orgContext/OrgContext";
+import { deleteOrg, getOrgs } from "../../context/orgContext/ApiCalls";
 
-export default function List() {
-  const { lists, dispatch } = useContext(ListContext);
+export default function Orgs() {
+  const { orgs, dispatch } = useContext(OrgContext);
 
   useEffect(() => {
-    getLists(dispatch);
+    getOrgs(dispatch);
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    deleteList(id, dispatch);
+    deleteOrg(id, dispatch);
   };
 
   const columns = [
     { field: "_id", headerName: "ID", width: 250 },
-    { field: "title", headerName: "Title", width: 250 },
-    { field: "genre", headerName: "Genre", width: 150 },
-    { field: "type", headerName: "type", width: 150 },
+    { field: "name", headerName: "Name", width: 250 },
+    { field: "description", headerName: "Description", width: 150 },
+    { field: "users", headerName: "Users", width: 150 },
+    { field: "admin", headerName: "Admin", width: 150 },
 
     {
       field: "action",
@@ -30,9 +31,7 @@ export default function List() {
       renderCell: (params) => {
         return (
           <>
-            <Link
-              to= {`/list/${params.row._id}`} state = {{list: params.row}}
-            >
+            <Link to={`/org/${params.row._id}`} state={{ org: params.row }}>
               <button className="productListEdit buttonEdit">View</button>
             </Link>
             <DeleteOutline
@@ -46,17 +45,16 @@ export default function List() {
   ];
 
   return (
-    <div className="productList"> 
+    <div className="productList">
       <div className="productTitleContainer">
-        <h1 className="productTitle">LISTS</h1>
-        <Link to="/createnewlist">
+        <h1 className="productTitle">Organizations</h1>
+        <Link to="/createneworg">
           <button className="productAddButton button">Create</button>
         </Link>
       </div>
-    
-    
+
       <DataGrid
-        rows={lists}
+        rows={orgs}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}

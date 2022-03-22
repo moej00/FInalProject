@@ -1,43 +1,27 @@
-import "./movieList.css";
+import "./adminList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useContext } from "react";
-import { MovieContext } from "../../context/movieContext/MovieContext";
-import { deleteMovie, getMovies } from "../../context/movieContext/ApiCalls";
+import { AdminContext } from "../../context/adminContext/AdminContext";
+import { deleteAdmin, getAdmins } from "../../context/adminContext/ApiCalls";
 
-export default function MovieList() {
-  const { movies, dispatch } = useContext(MovieContext);
+export default function AdminList() {
+  const { admins, dispatch } = useContext(AdminContext);
 
   useEffect(() => {
-    getMovies(dispatch);
+    getAdmins(dispatch);
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    deleteMovie(id, dispatch);
+    deleteAdmin(id, dispatch);
   };
 
   const columns = [
     { field: "_id", headerName: "ID", width: 200 },
-    {
-      field: "movie",
-      headerName: "Movie",
-      width: 200,
-      renderCell: (params) => {
-        return (
-  
-          <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
-            {params.row.title}
-          </div>
-        );
-      },
-    },
-    { field: "genre", headerName: "Genre", width: 120 },
-    { field: "year", headerName: "Year", width: 120 },
-    { field: "limit", headerName: "Limit", width: 120 },
-    { field: "isSeries", headerName: "isSeries", width: 120 },
+    { field: "username", headerName: "UserName", width: 120 },
+    { field: "email", headerName: "email address", width: 120 },
 
     {
       field: "action",
@@ -46,9 +30,7 @@ export default function MovieList() {
       renderCell: (params) => {
         return (
           <>
-            <Link
-              to= {`/movie/${params.row._id}`} state = {{movie: params.row}}
-            >
+            <Link to={`/admin/${params.row._id}`} state={{ admin: params.row }}>
               <button className="productListEdit buttonEdit">Edit</button>
             </Link>
             <DeleteOutline
@@ -63,14 +45,14 @@ export default function MovieList() {
 
   return (
     <div className="productList">
-       <div className="productTitleContainer">
+      <div className="productTitleContainer">
         <h1 className="productTitle">MOVIES</h1>
         <Link to="/newmovie">
           <button className="productAddButton button">Create</button>
         </Link>
       </div>
       <DataGrid
-        rows={movies}
+        rows={admins}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
