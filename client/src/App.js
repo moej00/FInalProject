@@ -42,12 +42,12 @@ function App() {
             <Route path="/users" element={<UserList />} />
             <Route path="/user/:userId" element={<User />} />
             <Route path="/newUser" element={<NewUser />} />
-            <Route path="/admins" element={<AdminList />} />
+            <Route path="/admin" element={<AdminList />} />
             <Route path="/admin/:adminId" element={<Admin />} />
             <Route path="/newadmin" element={<NewAdmin />} />
             <Route path="/orgs" element={<Orgs />} />
             <Route path="/org/:orgId" element={<NewOrg />} />
-            <Route path="/createneworg" element={<CreateNewOrg />} />
+            <Route path="/neworg" element={<CreateNewOrg />} />
           </Routes>
         </div>
       </>

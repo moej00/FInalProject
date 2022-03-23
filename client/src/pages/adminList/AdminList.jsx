@@ -20,8 +20,9 @@ export default function AdminList() {
 
   const columns = [
     { field: "_id", headerName: "ID", width: 200 },
-    { field: "username", headerName: "UserName", width: 120 },
-    { field: "email", headerName: "email address", width: 120 },
+    { field: "username", headerName: "UserName", width: 200 },
+    { field: "email", headerName: "email address", width: 200 },
+    { field: "isSuperAdmin", headerName: "IsSuperAdmin", width: 200 },
 
     {
       field: "action",
@@ -46,8 +47,8 @@ export default function AdminList() {
   return (
     <div className="productList">
       <div className="productTitleContainer">
-        <h1 className="productTitle">MOVIES</h1>
-        <Link to="/newmovie">
+        <h1 className="productTitle">ADMIN</h1>
+        <Link to="/newadmin">
           <button className="productAddButton button">Create</button>
         </Link>
       </div>

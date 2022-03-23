@@ -29,7 +29,6 @@ export default function ProductList() {
       },
     },
     { field: "email", headerName: "Email", width: 200 },
-    { field: "isAdmin", headerName: "isAdmin", width: 200 },
 
     {
       field: "action",
@@ -38,10 +37,7 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-        
-            <Link
-              to={`/user/${params.row._id}`} state = {{user: params.row }}
-            >
+            <Link to={`/user/${params.row._id}`} state={{ user: params.row }}>
               <button className="userListEdit buttonEdit">View</button>
             </Link>
             <DeleteOutline
@@ -56,7 +52,7 @@ export default function ProductList() {
 
   return (
     <div className="userList">
-         <div className="userTitleContainer">
+      <div className="userTitleContainer">
         <h1 className="userTitle">USERS</h1>
         <Link to="/newUser">
           <button className="productAddButton button">Create</button>

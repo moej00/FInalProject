@@ -1,5 +1,11 @@
 import "./sidebar.css";
-import { Home, PermIdentity, Apartment, Add } from "@material-ui/icons";
+import {
+  Home,
+  PermIdentity,
+  Apartment,
+  AccountCircle,
+  AddCircle,
+} from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
@@ -16,6 +22,13 @@ export default function Sidebar() {
               </li>
             </NavLink>
 
+            <NavLink to="/admin" className="link" activeclassname="active">
+              <li className="sidebarListItem">
+                <AccountCircle className="sidebarIcon" />
+                Admin
+              </li>
+            </NavLink>
+
             <NavLink to="/users" className="link" activeclassname="active">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
@@ -23,7 +36,7 @@ export default function Sidebar() {
               </li>
             </NavLink>
 
-            <NavLink to="/movies" className="link" activeclassname="active">
+            <NavLink to="/orgs" className="link" activeclassname="active">
               <li className="sidebarListItem">
                 <Apartment className="sidebarIcon" />
                 Organization
@@ -35,16 +48,23 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Action Menu</h3>
           <ul className="sidebarList">
+            <NavLink to="/newadmin" className="link" activeclassname="active">
+              <li className="sidebarListItem">
+                <AddCircle className="sidebarIcon" />
+                New Admin
+              </li>
+            </NavLink>
+
             <NavLink to="/newuser" className="link" activeclassname="active">
               <li className="sidebarListItem">
-                <Add className="sidebarIcon" />
+                <AddCircle className="sidebarIcon" />
                 New User
               </li>
             </NavLink>
 
-            <NavLink to="/newmovie" className="link" activeclassname="active">
+            <NavLink to="/neworg" className="link" activeclassname="active">
               <li className="sidebarListItem">
-                <Add className="sidebarIcon" />
+                <AddCircle className="sidebarIcon" />
                 New Organization
               </li>
             </NavLink>

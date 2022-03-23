@@ -7,8 +7,6 @@ import { createAdmin } from "../../context/adminContext/ApiCalls";
 
 export default function NewAdmin() {
   const [admin, setAdmin] = useState(null);
-  const [adminEmail, setAdminEmail] = useState(null);
-  const [adminUserName, setAdminUserName] = useState(null);
 
   const { dispatch } = useContext(AdminContext);
   const changeHandler = (e) => {
@@ -16,9 +14,6 @@ export default function NewAdmin() {
     setAdmin({ ...admin, [e.target.name]: value });
   };
 
-  const uploadHandler = (e) => {
-    e.preventDefault();
-  };
   const submitHandler = (e) => {
     e.preventDefault();
     createAdmin(admin, dispatch);
@@ -31,7 +26,7 @@ export default function NewAdmin() {
           <label>User Name</label>
           <input
             type="text"
-            placeholder={admin.username}
+            placeholder="username"
             name="username"
             onChange={changeHandler}
           />
@@ -41,31 +36,10 @@ export default function NewAdmin() {
           <label>email</label>
           <input
             type="text"
-            placeholder={admin.email}
+            placeholder="email"
             name="email"
             onChange={changeHandler}
           />
-        </div>
-
-        <div className="addProductItem">
-          <label>Genre</label>
-          <select name="genre" id="genre" onChange={changeHandler}>
-            <option>Genre</option>
-            <option value="adventure">Adventure</option>
-            <option value="action">Action</option>
-            <option value="comedy">Comedy</option>
-            <option value="crime">Crime</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="historical">Historical</option>
-            <option value="horror">Horror</option>
-            <option value="romance">Romance</option>
-            <option value="sci-fi">Sci-fi</option>
-            <option value="thriller">Thriller</option>
-            <option value="western">Western</option>
-            <option value="animation">Animation</option>
-            <option value="drama">Drama</option>
-            <option value="documentary">Documentary</option>
-          </select>
         </div>
 
         <div className="addProductItem">
@@ -79,7 +53,7 @@ export default function NewAdmin() {
             <option value="true">Yes</option>
           </select>
         </div>
-        <Link to="/movies">
+        <Link to="/admin">
           <button className="addProductButton button" onClick={submitHandler}>
             Create
           </button>

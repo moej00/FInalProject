@@ -5,55 +5,8 @@ import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
 const Home = () => {
-  const MONTHS = useMemo(
-    () => [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "July",
-      "Aug",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
-    []
-  );
-
-  const [userStats, setUserStats] = useState([]);
-
-  useEffect(() => {
-    const getStats = async () => {
-      try {
-        const res = await axios.get("/users/stats", {
-          headers: {
-            token:
-              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-          },
-        });
-
-        const statsList = res.data.sort((a, b) => {
-          return a._id - b._id;
-        });
-
-        statsList.map((item) =>
-          setUserStats((prev) => [
-            ...prev,
-            { name: MONTHS[item._id - 1], "New User": item.total },
-          ])
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getStats();
-  }, [MONTHS]);
-
   return (
     <div className="home">
-      <Chart data={userStats} title="User Analytics" grid dataKey="New User" />
       <div className="homeWidgets">
         <WidgetSm />
       </div>

@@ -18,8 +18,8 @@ export default function Orgs() {
   };
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 250 },
-    { field: "name", headerName: "Name", width: 250 },
+    { field: "_id", headerName: "ID", width: 200 },
+    { field: "name", headerName: "Name", width: 150 },
     { field: "description", headerName: "Description", width: 150 },
     { field: "users", headerName: "Users", width: 150 },
     { field: "admin", headerName: "Admin", width: 150 },
