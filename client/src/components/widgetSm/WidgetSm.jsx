@@ -25,10 +25,15 @@ export default function WidgetSm() {
   }, []);
   return (
     <div className="widgetSm">
-      <span className="widgetSmTitle">All Users</span>
+      <span className="widgetSmTitle">New Join Employes</span>
       <ul className="widgetSmList">
         {newUsers.map((user) => (
           <li key={user._id} className="widgetSmListItem">
+            <img
+              src="https://www.pinclipart.com/picdir/middle/78-780477_about-us-avatar-icon-red-png-clipart.png"
+              alt=""
+              className="widgetSmImg"
+            />
             <div className="widgetSmUser">
               <span className="widgetSmUsername">{user.username}</span>
             </div>

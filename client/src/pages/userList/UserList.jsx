@@ -38,7 +38,7 @@ export default function ProductList() {
         return (
           <>
             <Link to={`/user/${params.row._id}`} state={{ user: params.row }}>
-              <button className="userListEdit buttonEdit">View</button>
+              <button className="userListEdit buttonEdit">Edit</button>
             </Link>
             <DeleteOutline
               className="userListDelete"

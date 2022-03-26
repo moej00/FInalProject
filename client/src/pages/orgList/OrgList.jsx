@@ -1,4 +1,4 @@
-import "./orgs.css";
+import "./orgList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import { useEffect, useContext } from "react";
 import { OrgContext } from "../../context/orgContext/OrgContext";
 import { deleteOrg, getOrgs } from "../../context/orgContext/ApiCalls";
 
-export default function Orgs() {
+export default function OrgList() {
   const { orgs, dispatch } = useContext(OrgContext);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function Orgs() {
     <div className="productList">
       <div className="productTitleContainer">
         <h1 className="productTitle">Organizations</h1>
-        <Link to="/createneworg">
+        <Link to="/neworg">
           <button className="productAddButton button">Create</button>
         </Link>
       </div>

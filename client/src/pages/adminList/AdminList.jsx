@@ -16,6 +16,7 @@ export default function AdminList() {
 
   const handleDelete = (id) => {
     deleteAdmin(id, dispatch);
+    window.location.reload();
   };
 
   const columns = [

@@ -17,9 +17,10 @@ import { AuthContext } from "./context/authContext/AuthContext";
 import Admin from "./pages/admin/Admin";
 import AdminList from "./pages/adminList/AdminList";
 import NewAdmin from "./pages/newAdmin/NewAdmin";
-import Orgs from "./pages/orgs/Orgs";
-import NewOrg from "./pages/newOrg/NewOrg";
-import CreateNewOrg from "./pages/createNewOrg/CreateNewOrg";
+import OrgList from "./pages/orgList/OrgList";
+import Org from "./pages/org/Org";
+import NewOrg from "./pages/newOrg/newOrg";
+import Employees from "./pages/employeebyorg/Employee";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -45,9 +46,10 @@ function App() {
             <Route path="/admin" element={<AdminList />} />
             <Route path="/admin/:adminId" element={<Admin />} />
             <Route path="/newadmin" element={<NewAdmin />} />
-            <Route path="/orgs" element={<Orgs />} />
-            <Route path="/org/:orgId" element={<NewOrg />} />
-            <Route path="/neworg" element={<CreateNewOrg />} />
+            <Route path="/orgs" element={<OrgList />} />
+            <Route path="/org/:orgId" element={<Org />} />
+            <Route path="/neworg" element={<NewOrg />} />
+            <Route path="/employees" element={<Employees />} />
           </Routes>
         </div>
       </>

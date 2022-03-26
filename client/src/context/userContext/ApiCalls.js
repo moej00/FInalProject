@@ -8,6 +8,9 @@ import {
   getUsersFailure,
   getUsersStart,
   getUsersSuccess,
+  updateUserFailure,
+  updateUserStart,
+  updateUserSuccess,
 } from "./UserActions";
 import axios from "axios";
 
@@ -33,9 +36,25 @@ export const createUser = async (user, dispatch) => {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
+
     dispatch(createUserSuccess(res.data));
   } catch (err) {
     dispatch(createUserFailure());
+  }
+};
+
+export const UpdateUser = async (id, dispatch) => {
+  dispatch(updateUserStart());
+  try {
+    const res = await axios.put("/users/" + id, {
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    });
+    res.data.accessToken = JSON.parse(localStorage.getItem("user")).accessToken;
+    dispatch(updateUserSuccess(id));
+  } catch (err) {
+    dispatch(updateUserFailure());
   }
 };
 

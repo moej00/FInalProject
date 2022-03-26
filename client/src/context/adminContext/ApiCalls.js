@@ -8,6 +8,9 @@ import {
   getAdminsFailure,
   getAdminsStart,
   getAdminsSuccess,
+  updateAdminFailure,
+  updateAdminStart,
+  updateAdminSuccess,
 } from "./AdminActions";
 import axios from "axios";
 
@@ -36,6 +39,20 @@ export const createAdmin = async (admin, dispatch) => {
     dispatch(createAdminSuccess(res.data));
   } catch (err) {
     dispatch(createAdminFailure());
+  }
+};
+
+export const updateAdmin = async (id, dispatch) => {
+  dispatch(updateAdminStart());
+  try {
+    await axios.put("/admins/" + id, {
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    });
+    dispatch(updateAdminSuccess(id));
+  } catch (err) {
+    dispatch(updateAdminFailure());
   }
 };
 
